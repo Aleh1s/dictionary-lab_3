@@ -13,7 +13,7 @@ public class IOStream {
             lines = new ArrayList<>();
 
             String line;
-            while (!Objects.equals(line = reader.readLine(), "")) {
+            while (Objects.nonNull(line = reader.readLine())) {
                 lines.add(line);
             }
 

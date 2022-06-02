@@ -6,13 +6,13 @@ import java.util.Properties;
 public class Property {
     private static Property property;
     private final Properties properties;
-    private final String CONFIGURATION_FILE_PATH = "src/main/resources/configuration.properties";
+    private final String DEFAULT_CONFIGURATION_FILE_PATH = "src/main/resources/configuration.properties";
 
     private Property() {
         properties = new Properties();
 
         try {
-            properties.load(new FileReader(CONFIGURATION_FILE_PATH));
+            properties.load(new FileReader(DEFAULT_CONFIGURATION_FILE_PATH));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

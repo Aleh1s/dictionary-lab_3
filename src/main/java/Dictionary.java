@@ -1,8 +1,7 @@
-import com.sun.security.auth.UnixNumericGroupPrincipal;
-
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.regex.Pattern;
+import java.util.Queue;
 
 public class Dictionary {
 
@@ -34,22 +33,24 @@ public class Dictionary {
         return hashtable.get(key);
     }
 
-    public String[] findDefinitions(String str) {
-        if (!Objects.nonNull(str)) {
+    public Queue<DefinitionResponse> findDefinitions(String querySequences) {
+        if (!Objects.nonNull(querySequences) || Objects.equals(querySequences, "")) {
             return null;
         }
 
-        if (Objects.equals(str, "")) {
-            return null;
+        Queue<DefinitionResponse> responses = new LinkedList<>();
+        querySequences = querySequences.replaceAll("[,.!?():{}\\[\\]]", " ");
+        String[] queries = querySequences.split(" +");
+
+        for (String query : queries) {
+            DefinitionResponse response = new DefinitionResponse(
+                    query,
+                    findDefinition(query)
+            );
+            responses.add(response);
         }
 
-        str = str.replaceAll("[,!?():{}\\[\\]]", " ");
-        String[] words = str.split(" +");
 
-        for (int i = 0; i < words.length; i++) {
-            words[i] = findDefinition(words[i]);
-        }
-
-        return words;
+        return responses;
     }
 }

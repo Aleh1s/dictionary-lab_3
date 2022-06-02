@@ -122,8 +122,4 @@ public class Hashtable {
 
         return null;
     }
-
-    public int getSize() {
-        return table.length;
-    }
 }
