@@ -30,16 +30,10 @@ public class Wrapper {
         );
 
         Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.print("Type a sentence to get definition or '-1' if you want to exit: ");
-            String query = scanner.nextLine();
+        System.out.print("Type a sentence to get definition: ");
+        String query = scanner.nextLine();
 
-            if (Objects.equals(query, "-1")) {
-                System.out.println("Good luck!!!");
-                break;
-            }
-
-            controller.getDefinitions(query);
-        }
+        controller.getDefinitions(query);
     }
 }
+

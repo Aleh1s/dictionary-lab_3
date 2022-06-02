@@ -9,6 +9,7 @@ public class Controller {
 
     private final Model model;
     private final View view;
+
     public Controller(
             Model model,
             View view
@@ -21,6 +22,7 @@ public class Controller {
         Queue<DefinitionResponse> definitions = model.findDefinitions(query);
         if (!Objects.nonNull(definitions)) {
             System.err.println("Query can not be null or empty");
+            return;
         }
 
         view.showDefinitions(definitions);

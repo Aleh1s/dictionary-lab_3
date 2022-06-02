@@ -11,9 +11,9 @@ public class View {
         DefinitionResponse response;
         while (Objects.nonNull(response = definitions.poll())) {
             if (!Objects.nonNull(response.getDefinition())) {
-                System.out.printf("CAN NOT FIND DEFINITION FOR WORD [%s]\n", response.getQuery());
+                System.err.printf("Can not find definition of word [%s]%n", response.getQuery());
             } else {
-                System.out.printf("Definition for query [%s]: %s\n",response.getQuery(), response.getDefinition());
+                System.out.printf("Definition for query [%s]: %s\n\n", response.getQuery(), response.getDefinition());
             }
         }
     }

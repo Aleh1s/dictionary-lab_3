@@ -11,7 +11,6 @@ public class Hashtable {
     private float loadFactor;
 
     static class Entry {
-
         String key;
         String value;
         int hash;
@@ -63,7 +62,7 @@ public class Hashtable {
         int hash = key.hashCode();
         int index = (hash & Integer.MAX_VALUE) % tab.length;
         Entry entry = tab[index];
-        for (; entry != null ; entry = entry.next) {
+        for (; entry != null; entry = entry.next) {
             if (hash == entry.hash && key.equals(entry.key)) {
                 String oldValue = entry.value;
                 entry.value = value;
