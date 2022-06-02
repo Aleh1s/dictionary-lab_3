@@ -7,11 +7,9 @@ import java.util.Objects;
 
 public class IOStream {
 
-    private static final String dictionaryPath = "default.path";
-
-    public static List<String> readLines() {
+    public static List<String> readLines(String path) {
         List<String> lines;
-        try(BufferedReader reader = new BufferedReader(new FileReader(dictionaryPath))) {
+        try(BufferedReader reader = new BufferedReader(new FileReader(path))) {
             lines = new ArrayList<>();
 
             String line;
