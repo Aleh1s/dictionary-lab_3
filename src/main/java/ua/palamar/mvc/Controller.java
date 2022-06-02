@@ -1,3 +1,7 @@
+package ua.palamar.mvc;
+
+import ua.palamar.dto.DefinitionResponse;
+
 import java.util.Objects;
 import java.util.Queue;
 

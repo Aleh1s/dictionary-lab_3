@@ -1,3 +1,10 @@
+package ua.palamar;
+
+import ua.palamar.dataStructure.Hashtable;
+import ua.palamar.dto.DefinitionResponse;
+import ua.palamar.property.Property;
+import ua.palamar.stream.IOStream;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;

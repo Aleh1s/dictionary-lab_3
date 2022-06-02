@@ -1,3 +1,5 @@
+package ua.palamar.dataStructure;
+
 import java.util.Objects;
 
 public class Hashtable {

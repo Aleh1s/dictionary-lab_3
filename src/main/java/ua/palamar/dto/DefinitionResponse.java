@@ -1,3 +1,5 @@
+package ua.palamar.dto;
+
 public class DefinitionResponse {
 
     private final String query;

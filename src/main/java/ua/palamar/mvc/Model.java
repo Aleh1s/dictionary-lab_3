@@ -1,3 +1,8 @@
+package ua.palamar.mvc;
+
+import ua.palamar.dto.DefinitionResponse;
+import ua.palamar.Dictionary;
+
 import java.util.Queue;
 
 public class Model {

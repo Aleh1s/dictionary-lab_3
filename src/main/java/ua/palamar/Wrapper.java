@@ -1,3 +1,9 @@
+package ua.palamar;
+
+import ua.palamar.mvc.Controller;
+import ua.palamar.mvc.Model;
+import ua.palamar.mvc.View;
+
 import java.util.Objects;
 import java.util.Scanner;
 
