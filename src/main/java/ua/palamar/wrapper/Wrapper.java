@@ -1,10 +1,8 @@
-package ua.palamar;
+package ua.palamar.wrapper;
 
-import ua.palamar.mvc.Controller;
-import ua.palamar.mvc.Model;
-import ua.palamar.mvc.View;
+import ua.palamar.mvc.controller.Controller;
+import ua.palamar.mvc.model.FileSystemModel;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Wrapper {
@@ -24,10 +22,7 @@ public class Wrapper {
     }
 
     public static void findDefinition() {
-        Controller controller = new Controller(
-                new Model(),
-                new View()
-        );
+        Controller controller = new Controller(new FileSystemModel());
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type a sentence to get definition: ");

@@ -1,7 +1,7 @@
-package ua.palamar;
+package ua.palamar.dictionary;
 
 import ua.palamar.dataStructure.Hashtable;
-import ua.palamar.dto.DefinitionResponse;
+import ua.palamar.dto.Definition;
 import ua.palamar.property.Property;
 import ua.palamar.stream.IOStream;
 
@@ -25,9 +25,9 @@ public class Dictionary {
 
     public Hashtable loadContent() {
         Hashtable hashtable = new Hashtable();
-        List<String> content = IOStream.readLines(DEFAULT_DICTIONARY_PATH);
+        List<String> definitions = IOStream.readLines(DEFAULT_DICTIONARY_PATH);
 
-        for (String definition : content) {
+        for (String definition : definitions) {
             String key = definition.substring(0, definition.indexOf(";"));
             hashtable.put(key.toLowerCase(), definition);
         }
@@ -40,19 +40,19 @@ public class Dictionary {
         return hashtable.get(key);
     }
 
-    public Queue<DefinitionResponse> findDefinitions(String querySequences) {
-        if (!Objects.nonNull(querySequences) || Objects.equals(querySequences, "")) {
+    public Queue<Definition> findDefinitions(String query) {
+        if (!Objects.nonNull(query) || Objects.equals(query, "")) {
             return null;
         }
 
-        Queue<DefinitionResponse> responses = new LinkedList<>();
-        querySequences = querySequences.replaceAll("[,.!?():{}\\[\\]]", " ");
-        String[] queries = querySequences.split(" +");
+        Queue<Definition> responses = new LinkedList<>();
+        query = query.replaceAll("[,.!?():{}\\[\\]]", " ");
+        String[] keys = query.split(" +");
 
-        for (String query : queries) {
-            DefinitionResponse response = new DefinitionResponse(
-                    query,
-                    findDefinition(query)
+        for (String key : keys) {
+            Definition response = new Definition(
+                    key,
+                    findDefinition(key)
             );
             responses.add(response);
         }
