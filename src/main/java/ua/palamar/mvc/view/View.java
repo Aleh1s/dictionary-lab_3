@@ -1,12 +1,10 @@
 package ua.palamar.mvc.view;
 
-import ua.palamar.dto.Definition;
-import ua.palamar.mvc.Observer;
+import ua.palamar.entity.Definition;
 
-import java.util.Queue;
+public interface View {
 
-public interface View extends Observer {
-
-    void showDefinitions(Queue<Definition> definitions);
+    void update(Exception exception);
+    void update(Definition definition);
 
 }

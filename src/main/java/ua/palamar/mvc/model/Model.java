@@ -1,9 +1,11 @@
 package ua.palamar.mvc.model;
 
-import ua.palamar.mvc.Observable;
+import ua.palamar.entity.Definition;
+import ua.palamar.exception.NoElementWithSuchKeyException;
+import ua.palamar.exception.NullOrEmptyStringException;
 
-public interface Model extends Observable {
+public interface Model {
 
-    void findDefinitions(String query);
+    Definition findDefinition(String query) throws NoElementWithSuchKeyException, NullOrEmptyStringException;
 
 }
