@@ -1,7 +1,6 @@
 package ua.palamar.mvc.controller;
 
 import ua.palamar.mvc.model.QueryParser;
-import ua.palamar.entity.Definition;
 import ua.palamar.exception.BadInputException;
 import ua.palamar.exception.NoElementWithSuchKeyException;
 import ua.palamar.exception.NullOrEmptyStringException;
@@ -27,7 +26,7 @@ public class Controller {
 
             for (String keyWord : keyWords) {
                 try {
-                    Definition definition = model.findDefinition(keyWord);
+                    String definition = model.findDefinition(keyWord);
                     view.update(definition);
                 } catch (NoElementWithSuchKeyException | NullOrEmptyStringException e) {
                     view.update(e);

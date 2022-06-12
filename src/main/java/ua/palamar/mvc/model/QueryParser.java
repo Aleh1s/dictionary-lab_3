@@ -16,7 +16,7 @@ public class QueryParser {
         query = query.trim();
         Pattern pattern = Pattern.compile("[-A-Za-z ]+");
         if (!pattern.matcher(query).matches()) {
-            throw new BadInputException("Query must not contain any symbols except letters and spaces");
+            throw new BadInputException("Query must not contain any symbols except letters, dashes and spaces");
         }
 
         String[] keyWords = query.split("\\s+");

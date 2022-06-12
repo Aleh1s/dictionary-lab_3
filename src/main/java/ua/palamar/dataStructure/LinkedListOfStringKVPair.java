@@ -6,7 +6,6 @@ public class LinkedListOfStringKVPair {
 
     private NodeOfStringKVPair first;
     private NodeOfStringKVPair last;
-    private int size;
 
     public boolean put(NodeOfStringKVPair nodeOfStringKVPair) {
         return put(nodeOfStringKVPair.key, nodeOfStringKVPair.value, nodeOfStringKVPair.hash);
@@ -16,21 +15,19 @@ public class LinkedListOfStringKVPair {
         NodeOfStringKVPair nodeOfStringKVPair = new NodeOfStringKVPair(hash, key, value);
         if (!Objects.nonNull(first)) {
             first = last = nodeOfStringKVPair;
-            size++;
             return true;
         } else if (replaceDuplicateIfExists(nodeOfStringKVPair)){
             return false;
         } else {
             last.next = nodeOfStringKVPair;
             last = last.next;
-            size++;
             return true;
         }
     }
 
     private boolean replaceDuplicateIfExists(NodeOfStringKVPair nodeOfStringKVPair) {
         for (NodeOfStringKVPair current = first; Objects.nonNull(current); current = current.next) {
-            if (current.hash == nodeOfStringKVPair.hash && current.key == nodeOfStringKVPair.key) {
+            if (current.hash == nodeOfStringKVPair.hash && current.key.equals(nodeOfStringKVPair.key)) {
                 current.value = nodeOfStringKVPair.value;
                 return true;
             }
@@ -53,13 +50,5 @@ public class LinkedListOfStringKVPair {
 
     public NodeOfStringKVPair getFirst() {
         return first;
-    }
-
-    public NodeOfStringKVPair getLast() {
-        return last;
-    }
-
-    public int getSize() {
-        return size;
     }
 }

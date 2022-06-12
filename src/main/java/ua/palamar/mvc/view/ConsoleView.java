@@ -1,12 +1,10 @@
 package ua.palamar.mvc.view;
 
-import ua.palamar.entity.Definition;
-
 public class ConsoleView implements View {
 
     private final static String DELIMITER = "-".repeat(175);
 
-    public void update(Definition definition) {
+    public void update(String definition) {
         System.out.println(definition);
         System.out.println(DELIMITER);
     }

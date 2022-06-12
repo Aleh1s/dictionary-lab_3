@@ -1,7 +1,6 @@
 package ua.palamar.mvc.model;
 
 import ua.palamar.dataStructure.HashtableOfStringKVPair;
-import ua.palamar.entity.Definition;
 import ua.palamar.exception.CanNotOpenFileException;
 import ua.palamar.exception.NoElementWithSuchKeyException;
 import ua.palamar.exception.NullOrEmptyStringException;
@@ -29,7 +28,9 @@ public class Dictionary implements Model {
         try {
             definitions = IOStream.readLines(DEFAULT_DICTIONARY_PATH);
         } catch (CanNotOpenFileException e) {
-            System.err.println(e.getMessage());
+            System.err.printf(
+                    "Exception: %s. Please put dictionary.txt in root folder.", e.getMessage()
+            );
             System.exit(-1);
         }
 
@@ -41,11 +42,12 @@ public class Dictionary implements Model {
         return hashtableOfStringKVPair;
     }
 
-    public Definition findDefinition(String key) throws NoElementWithSuchKeyException, NullOrEmptyStringException {
+    @Override
+    public String findDefinition(String key) throws NoElementWithSuchKeyException, NullOrEmptyStringException {
         if (!Objects.nonNull(key) || key.isBlank()) {
             throw new NullOrEmptyStringException("Key word can not be null or empty");
         }
 
-        return new Definition(key, hashtableOfStringKVPair.get(key));
+        return hashtableOfStringKVPair.get(key);
     }
 }
